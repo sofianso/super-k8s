@@ -1,0 +1,36 @@
+# Install Kubernetes extension, and type `Deployment` to get the template of this yaml file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-backend
+spec:
+  selector:
+    matchLabels:
+      app: k8s-backend
+  template:
+    metadata:
+      labels:
+        app: k8s-backend
+    spec:
+      containers:
+        - name: k8s-backend
+          image: <sofianso/<name_of_project>>
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: <Port>
+
+---
+# Install Kubernetes extension, and type `Service` to get the template of this yaml file
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+    - port: <Port>
+      targetPort: <Target Port>

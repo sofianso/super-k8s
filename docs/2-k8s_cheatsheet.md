@@ -33,7 +33,7 @@ To scale up the cluster, run the following command:
 `k scale deployment <name_of_project> --replicas=4`
 The number of replicas is up to you.
 
-## Retrieiving the Details
+## Retrieving the Details
 
 Get the details of all of the pods, run `k get pods -o wide`.
 
@@ -42,3 +42,31 @@ To retrieve the details of cluster, run `k describe deploy <name_of_project>`
 ### Delete a Service
 
 `k delete svc <name_of_project>`
+
+## Minikube Dashboard
+
+`minikube dashboard`
+
+## Delete All Clusters & Pods
+
+`k delete all -all`
+
+## Apply Deployment & Service in YAML
+
+`k apply -f deployment.yaml -f service.yaml`
+
+## Delete Deployment & Service in YAML
+
+`k delete -f deployment.yaml -f service.yaml`
+
+## Delete Minikube
+
+To delete Minikube, it first must be stopped using `minikube stop` and then `minikube delete`
+
+## Start Minikube
+
+For Mac,`minikube start --driver=virtualbox --container-runtime=cri-o`
+
+For Windows, `minikube start --driver=hyperv --container-runtime=cri-o`
+
+Since the containers are not run using Docker, but rather `cri-o`, to list the containers of `cri-o`, run `sudo crictl ps`
